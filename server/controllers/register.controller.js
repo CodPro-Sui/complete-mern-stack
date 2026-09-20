@@ -42,8 +42,6 @@ export const registerUser = async (req, res) => {
 
         res.status(201).json({ status: "success", message: "Successfully otp sent to your register email!" })
     } catch (err) {
-        console("register")
-        console.log(err);
         if (err.code === 11000) {
             return res.status(400).json({ status: "error", message: "Username already taken" });
         }
@@ -68,7 +66,7 @@ export const verifyRegister = async (req, res) => {
         await Otp.deleteOne({ _id: session._id });
         res.status(200).json({ status: "success", message: "Email verified successful" });
     } catch (err) {
-        console("verify-register")
+  
         res.status(500).json({ status: "error", message: "Server error" });
     }
 }
@@ -101,8 +99,6 @@ export const login = async (req, res) => {
        await sendMail(email,otp,"login");
         res.status(200).json({ status: "success", message: "OTP sent successful" });
     } catch (err) {
-         console.log("login");
-        console.log(err);
         res.status(500).json({ status: "error", message: "Something went wrong!" })
     }
 }
@@ -129,7 +125,6 @@ export const verifyLogin = async (req, res) => {
         let token = willExpire(updateLogin._id);
         res.status(200).json({ token, status: "success", message: "You are successfully login!" });
     } catch (error) {
-        console("verify-login")
         return res.status(500).json({ status: "error", message: "Server error" })
     }
 }
@@ -161,7 +156,6 @@ export const updatePassword = async (req, res) => {
       await sendMail(email,otp,"update");
         res.status(200).json({ status: "success", message: "OTP sent successfully!" });
     } catch (err) {
-        console("update")
         return res.status(500).json({ status: "error", message: "Server error found" });
     }
 }
@@ -185,7 +179,6 @@ export const verifyUpdate = async (req, res) => {
         await Otp.deleteOne({ _id: session._id });
         res.status(200).json({ status: "success", message: "Successfully password updated!" })
     } catch (err) {
-        console("verify-update")
         res.status(500).json({ status: "error", message: "Server error" });
     }
 }

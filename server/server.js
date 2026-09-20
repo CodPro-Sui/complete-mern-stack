@@ -30,7 +30,7 @@ app.use(express.urlencoded({extended: true}));
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use("/uploads",express.static(path.join(__dirname,"uploads")))
-console.log("restart");
+
 const loginLimiter =limitRate({
 windowMs: 1000 * 60 * 10,
 limit: 40,
