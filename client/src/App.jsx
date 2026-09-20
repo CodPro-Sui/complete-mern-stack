@@ -138,7 +138,7 @@ const App = () => {
                         <td>
                           <div className="profile">
                             <img
-                              src={`https://codpro-technology-api.onrender.com/uploads/${data.avatar}`}
+                              src={data.avatar}
                               alt="Team_Member"
                             />
                           </div>

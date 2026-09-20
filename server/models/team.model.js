@@ -5,6 +5,9 @@ const team = new mongoose.Schema({
         type:String,
         required: true
     },
+   avatarId:{
+     type:String
+    },
     fname:{
         type: String,
         required: true,

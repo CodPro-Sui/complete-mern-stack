@@ -12,14 +12,8 @@ export const errHandle = (err,req,res,next) =>{
     return res.status(500).json({status:"error",message: "Server error"})
 }
 
-const storage = multer.diskStorage({
-    destination: (req,file,cb) =>{
-        cb(null,"./uploads")
-    },
-    filename: (req,file,cb) =>{
-        cb(null,Date.now()+path.extname(file.originalname))
-    }
-});
+
+
 const fileFilter = (req,file,cb) =>{
     const exts = [".jpg",".jpeg",".png"];
     const fileType = path.extname(file.originalname).toLowerCase();
@@ -30,7 +24,7 @@ const fileFilter = (req,file,cb) =>{
     }
 }
 export const upload = multer({
-    storage,
+    storage : multer.memoryStorage(),
     fileFilter,
     limits:{
         fileSize: 1024 * 1024 * 3

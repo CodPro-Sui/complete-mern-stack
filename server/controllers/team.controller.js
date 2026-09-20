@@ -1,10 +1,24 @@
 import Team from "../models/team.model.js";
+import { uploadImage, deleteImage } from "../config/cloudinary.js";
 import crypto from "node:crypto";
 import { validationResult } from "express-validator";
 import fs from "node:fs/promises";
 import path from "node:path";
 import mongoose from "mongoose";
 import pegination from "../helper/pegination.js";
+
+
+
+const safeDeleteImage = async (publicId) => {
+  if (!publicId) return;
+  try {
+    await deleteImage(publicId);
+  } catch (err) {
+    console.error("Cloudinary delete failed:", publicId, err);
+  }
+};
+
+
 export const getTeam = async (req,res) =>{
     try{
      const search = req.query.search || "";
@@ -30,6 +44,7 @@ export const getTeam = async (req,res) =>{
 }
 
 export const addTeam = async (req,res) => {
+     let avatarId;
      try{
       const errs = validationResult(req);
       if(!errs.isEmpty()){
@@ -37,9 +52,12 @@ export const addTeam = async (req,res) => {
        }
       const unique_id = crypto.randomBytes(5).toString("base64url").slice(0, 7);
       const {fname,lname,number,email,role} = req.body;
-  
+    
+    let uploadFile = await uploadImage(req.file.buffer);
+    avatarId = uploadFile.public_id;
 const team_info = new Team({
-        avatar: req.file.filename,
+        avatar: uploadFile.secure_url,
+        avatarId,
          fname,
          lname,
          number,
@@ -66,13 +84,18 @@ export const updateSingle = async (req,res) => {
     return res.status(400).json(errs.mapped());
     }
     if(req.file){ 
-    req.body.avatar = req.file.filename;
-    await fs.unlink(path.join(process.cwd(),"uploads",alreadyTeam.avatar));
+     let uploadFile = await uploadImage(req.file.buffer);
+    if(uploadFile.secure_url && uploadFile.public_id){
+     await safeDeleteImage(already.avatarId);
+     req.body.avatar = uploadFile.secure_url;
+     req.body.avatarId = uploadFile.public_id;
+    } 
     }else{
     req.body.avatar = alreadyTeam.avatar;
+     req.body.avatarId = alreadyTeam.avatarId;
     }
     
-    const result = await Team.findByIdAndUpdate(alreadyTeam._id,{$set:req.body},{returnDocument:"after",runValidators:true});
+    await Team.findByIdAndUpdate(alreadyTeam._id,{$set:req.body},{returnDocument:"after",runValidators:true});
     return res.status(200).json({status:"success",message:"Updated!"}); 
    }catch(err){
      console.log(err);
@@ -105,16 +128,11 @@ export const deleteSingle = async (req, res) => {
       });
     }
 
-    if (alreadyTeam.avatar) {
-      await fs.unlink(
-        path.join(process.cwd(), "uploads", alreadyTeam.avatar)
-      );
-    }
-
     await Team.deleteOne({
       _id: alreadyTeam._id
     });
-
+   
+   await safeDeleteImage(alreadyTeam.avatarId);
     return res.status(200).json({
       status: "success",
       message: "Deleted successfully!"

@@ -12,7 +12,8 @@ const show = ({ fn, data, deleteContact, edit }) => {
 
             <img
               className="profile-picture"
-              src={`https://codpro-technology-api.onrender.com/uploads/${data.avatar}`}
+              src={data.avatar}
+
               alt="Rahul Kumar"
             />
 
