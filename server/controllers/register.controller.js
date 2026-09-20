@@ -42,6 +42,7 @@ export const registerUser = async (req, res) => {
 
         res.status(201).json({ status: "success", message: "Successfully otp sent to your register email!" })
     } catch (err) {
+        console.error("Registration",err);
         if (err.code === 11000) {
             return res.status(400).json({ status: "error", message: "Username already taken" });
         }
