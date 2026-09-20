@@ -1,0 +1,506 @@
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --silver-dark: #55585e;
+  --silver: #8d9096;
+  --border: #dedfe2;
+  --text: #18191c;
+  --muted: #777b83;
+  --white: #ffffff;
+}
+
+body {
+  min-height: 100vh;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      #f0f1f3,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      #e6e7e9,
+      transparent 32%
+    ),
+    #fafafa;
+}
+small{
+  color:red
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.auth-page {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px 20px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.auth-card {
+  width: 100%;
+  max-width: 450px;
+
+  padding: 46px;
+
+  background: rgba(255, 255, 255, .94);
+
+  border: 1px solid rgba(180, 182, 187, .45);
+
+  border-radius: 26px;
+
+  box-shadow:
+    0 35px 80px rgba(80, 82, 87, .12),
+    0 8px 25px rgba(80, 82, 87, .06);
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+
+/* Premium silver line */
+
+.auth-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 12%;
+  right: 12%;
+
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #bfc1c5,
+      #ffffff,
+      #aeb1b6,
+      transparent
+    );
+}
+
+
+/* =========================
+   BRAND
+========================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 38px;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 13px;
+
+  color: white;
+
+  font-size: 20px;
+  font-weight: 800;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f8f8f8,
+      #bfc1c5 45%,
+      #777a80
+    );
+
+  border: 1px solid #b5b7bc;
+
+  box-shadow:
+    inset 1px 1px 2px rgba(255,255,255,.9),
+    0 8px 18px rgba(80,80,80,.15);
+}
+
+.brand span {
+  font-size: 21px;
+  font-weight: 750;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.auth-header {
+  margin-bottom: 30px;
+}
+
+.auth-header h1 {
+  font-size: 30px;
+
+  letter-spacing: -1px;
+
+  margin-bottom: 9px;
+}
+
+.auth-header p {
+  color: var(--muted);
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.auth-form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 19px;
+}
+
+.field {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.field label {
+  color: #35373c;
+
+  font-size: 13px;
+
+  font-weight: 650;
+}
+
+.field input {
+  width: 100%;
+
+  height: 54px;
+
+  padding: 0 15px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 12px;
+
+  outline: none;
+
+  background: #fbfbfc;
+
+  color: #202124;
+
+  font-size: 14px;
+
+  transition: .2s;
+}
+
+.field input::placeholder {
+  color: #a3a6ac;
+}
+
+.field input:hover {
+  border-color: #c4c6ca;
+}
+
+.field input:focus {
+  background: white;
+
+  border-color: #96999f;
+
+  box-shadow:
+    0 0 0 4px rgba(150,153,159,.11);
+}
+
+
+/* =========================
+   AGREEMENT
+========================= */
+
+.agreement {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 11px;
+
+  margin-top: 2px;
+
+  cursor: pointer;
+}
+
+.agreement input {
+  position: absolute;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.checkmark {
+  width: 19px;
+  height: 19px;
+
+  min-width: 19px;
+
+  margin-top: 1px;
+
+  border: 1px solid #c8cacf;
+
+  border-radius: 5px;
+
+  background: #ffffff;
+
+  position: relative;
+
+  transition: .2s;
+}
+
+
+/* Checked */
+
+.agreement input:checked + .checkmark {
+  background: #66696f;
+
+  border-color: #66696f;
+}
+
+.agreement input:checked + .checkmark::after {
+  content: "";
+
+  position: absolute;
+
+  width: 5px;
+  height: 9px;
+
+  left: 6px;
+  top: 3px;
+
+  border: solid white;
+
+  border-width: 0 2px 2px 0;
+
+  transform: rotate(45deg);
+}
+
+
+/* Agreement text */
+
+.agreement-text {
+  color: #858890;
+
+  font-size: 11px;
+
+  line-height: 1.6;
+}
+
+.agreement-text strong {
+  color: #4e5157;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.register-btn {
+  width: 100%;
+
+  height: 55px;
+
+  margin-top: 3px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  background:
+    linear-gradient(
+      135deg,
+      #909399,
+      #55585e
+    );
+
+  box-shadow:
+    0 12px 25px rgba(80,82,87,.20);
+
+  transition: .2s;
+}
+
+.register-btn span {
+  font-size: 18px;
+
+  transition: .2s;
+}
+
+.register-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 16px 32px rgba(80,82,87,.25);
+}
+
+.register-btn:hover span {
+  transform: translateX(4px);
+}
+
+.register-btn:active {
+  transform: translateY(0);
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-link {
+  margin-top: 26px;
+
+  text-align: center;
+
+  color: var(--muted);
+
+  font-size: 13px;
+}
+
+.login-link a {
+  margin-left: 5px;
+
+  color: #55585e;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================
+   SECURITY
+========================= */
+
+.security {
+  margin-top: 27px;
+
+  padding-top: 19px;
+
+  border-top: 1px solid #eeeeef;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  color: #a0a3a8;
+
+  font-size: 11px;
+}
+
+.security span {
+  color: #85888e;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 520px) {
+
+  .auth-page {
+    padding: 18px 14px;
+  }
+
+  .auth-card {
+    padding: 34px 23px;
+
+    border-radius: 21px;
+  }
+
+  .brand {
+    margin-bottom: 32px;
+  }
+
+  .auth-header h1 {
+    font-size: 27px;
+  }
+
+  .field input,
+  .register-btn {
+    height: 53px;
+  }
+}
+
+
+@media (max-width: 360px) {
+
+  .auth-card {
+    padding: 29px 18px;
+  }
+
+  .auth-header h1 {
+    font-size: 24px;
+  }
+
+  .agreement-text {
+    font-size: 10.5px;
+  }
+}

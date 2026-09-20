@@ -1,0 +1,167 @@
+    .modal-overlay {
+      
+      animation: fadeIn 0.25s ease;
+    }
+
+    /* Modal */
+
+    .delete-modal {
+      width: 100%;
+      max-width: 430px;
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 32px;
+      text-align: center;
+
+      box-shadow:
+        0 25px 70px rgba(20, 28, 50, 0.22);
+
+      animation: modalIn 0.3s ease;
+    }
+
+    /* Warning Icon */
+
+    .warning-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: #fff1f2;
+      color: #e04f5f;
+
+      font-size: 30px;
+      font-weight: 800;
+
+      box-shadow:
+        0 0 0 8px #fff8f8;
+    }
+
+    /* Text */
+
+    .delete-title {
+      font-size: 23px;
+      font-weight: 800;
+      color: #20283a;
+      margin-bottom: 10px;
+    }
+
+    .delete-text {
+      color: #7e8798;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .contact-name {
+      color: #20283a;
+      font-weight: 750;
+    }
+
+    .warning-text {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #fff5f5;
+      color: #d94a59;
+      font-size: 12px;
+      font-weight: 650;
+      margin-bottom: 25px;
+    }
+
+    /* Buttons */
+
+    .modal-actions {
+      display: flex;
+      gap: 11px;
+    }
+
+    .btn {
+      flex: 1;
+      height: 46px;
+      border-radius: 11px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s;
+      padding: 9px;
+    }
+
+    .cancel-btn {
+      border: 1px solid #e1e5ed;
+      background: #ffffff;
+      color: #626b7d;
+    }
+
+    .cancel-btn:hover {
+      background: #f7f8fa;
+      border-color: #cbd0da;
+    }
+
+    .delete-btn {
+      border: 1px solid #e04f5f;
+      background: #e04f5f;
+      color: #ffffff;
+
+      box-shadow:
+        0 7px 18px rgba(224, 79, 95, 0.20);
+    }
+
+    .delete-btn:hover {
+      background: #cc3e4e;
+      border-color: #cc3e4e;
+      transform: translateY(-2px);
+      box-shadow:
+        0 10px 24px rgba(224, 79, 95, 0.27);
+    }
+
+    /* Animation */
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 500px) {
+
+      .delete-modal {
+        padding: 27px 20px;
+        border-radius: 19px;
+      }
+
+      .delete-title {
+        font-size: 21px;
+      }
+
+      .modal-actions {
+        flex-direction: column-reverse;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }

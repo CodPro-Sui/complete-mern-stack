@@ -1,0 +1,144 @@
+.emailcontainer {
+  padding: 5px;
+  border-radius: 12px;
+  background-color: whitesmoke;
+}
+
+.messagelogo,
+.verifybtn,
+.subject div.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.messagelogo span {
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 3.2em;
+  background: #DFE6EB85;
+}
+button:disabled{
+opacity: 0.5,
+cursor: no-allowed;
+}
+
+.subject {
+  padding: 7px 5px;
+}
+
+.subject h2 {
+  color: #1A1E42;
+text-align: center
+}
+
+.subject p {
+  color: #161A3DB0;
+text-align:center;
+  letter-spacing: 0.3px;
+}
+
+.subject div.center strong {
+  color: #6DB1E0;
+text-align: center;
+padding: 6px 0;
+  letter-spacing: 0.2px;
+}
+
+.otp {
+  display: flex;
+  justify-content: center;
+  align-items:  center;
+gap: 7px;
+  padding: 8px 10px;
+}
+
+.otp input {
+  width: 50px;
+  height: 50px;
+  border-radius: 13px;
+  background: #D7EAF754;
+  color:#4C86AD;
+  border: 1px solid #D0DFEAED;
+  cursor: pointer;
+  font-size: 1.8em;
+  text-align: center;
+  transition: all 0.3s ease;
+  outline: none;
+   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.otp input:hover,
+.otp input:focus {
+  border-color: #78BBEC;
+  outline: 2px solid #78BBEC57;
+}
+.verifybtn{
+padding-top:6px;
+}
+.verifybtn button{
+  padding: 6px 20px;
+  border-radius: 8px;
+  color: #DFEBE2;
+outline:none;
+margin:6px auto;
+border: none;
+  background: #418DC0;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+  letter-spacing: 0.2px;
+  font-size: 1.1em;
+}
+
+.verifybtn button:hover,
+.verifybtn button:active {
+  animation: click 0.5s ease forwards;
+}
+
+@keyframes click {
+  0% {
+    transform: scale(0.8);
+   background: #6FA5C9;
+  }
+
+  50% {
+    transform: scale(1.3);
+   background: #6FA5C9;  
+}
+
+  100% {
+    transform: scale(1);
+background: #6FA5C9;  
+}
+}
+
+.resendotp {
+  padding: 8px;
+}
+
+.resendotp p {
+text-align: center;
+  color: #81909A;
+}
+
+.timer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px;
+margin-top:5px;
+}
+
+.timer span{
+color: #CB4B11;
+}
+.timer button{
+border:none;
+outline:none;
+background: transparent;
+}
+.timer button a {
+  text-decoration: none;
+letter-spacing: 0.2px;
+font-size: 17px;
+color:#5EA7D9;
+}
