@@ -7,7 +7,7 @@ import Loading from "./Loading.jsx";
 const Edit = ({close,fn,data,addToast,refresh}) => {
 const [editable,setEditable] = useState(data);
 const {pathUrl,uploadFile} = useUpload();
-   const imgPath = `http://localhost:3030/uploads/${data.avatar}`;
+   const imgPath = `https://codpro-technology-api/uploads/${data.avatar}`;
  const triger = useCallback((e) =>{
        const {value,name} = e.target;
      setEditable(pre =>({...pre,[name]: value.trim()}));

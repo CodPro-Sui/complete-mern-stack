@@ -12,7 +12,7 @@ const show = ({ fn, data, deleteContact, edit }) => {
 
             <img
               className="profile-picture"
-              src={`http://localhost:3030/uploads/${data.avatar}`}
+              src={`https://codpro-technology-api.onrender.com/uploads/${data.avatar}`}
               alt="Rahul Kumar"
             />
 
