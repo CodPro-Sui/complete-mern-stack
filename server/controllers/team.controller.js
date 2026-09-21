@@ -86,7 +86,7 @@ export const updateSingle = async (req,res) => {
     if(req.file){ 
      let uploadFile = await uploadImage(req.file.buffer);
     if(uploadFile.secure_url && uploadFile.public_id){
-     await safeDeleteImage(already.avatarId);
+     await safeDeleteImage(alreadyTeam.avatarId);
      req.body.avatar = uploadFile.secure_url;
      req.body.avatarId = uploadFile.public_id;
     } 
